@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial and Partners</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a263a;
+            padding: 15px;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container-testimonial {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .left-side, .right-side {
+            width: 100%;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .testimonial-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #ff8c00;
+            border-radius: 10px 0 0 10px;
+        }
+
+        .testimonial-header {
+            color: #ff8c00;
+            margin-top: 30px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .testimonial-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .testimonial-slide {
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .testimonial-quote-text {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .testimonial-quote {
+            color: #ff8c00;
+            font-size: 70px !important;
+            margin-right: 10px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            font-size: 14px;
+            padding-left: 10px;
+            flex: 1;
+        }
+
+        .testimonial-stars {
+            color: #ff8c00;
+            padding-left: 45px;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #fff;
+            font-size: 14px;
+            padding-left: 45px;
+        }
+
+        .author-image {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 45px;
+            margin-bottom: 10px;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Partners Section */
+        .right-side {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .right-side::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #ff8c00;
+            border-radius: 10px 0 0 10px;
+        }
+
+        .partners-header {
+            color: #ff8c00;
+            font-size: 18px;
+            margin-top: 35px !important;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            justify-items: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .partner-box {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .partner-box img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        /* Media Queries for Desktop View */
+        @media (min-width: 768px) {
+            .container-testimonial {
+                flex-direction: row;
+                gap: 30px;
+            }
+
+            .left-side, .right-side {
+                flex: 1;
+                height: 300px;
+            }
+
+            .testimonial-section {
+                padding: 20px;
+                height: 300px;
+            }
+
+            .testimonial-header {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+
+            .testimonial-text {
+                font-size: 14px;
+                padding-left: 15px;
+            }
+
+            .testimonial-quote {
+                font-size: 50px;
+            }
+
+            .testimonial-slide {
+                justify-content: flex-start;
+                height: 100%;
+            }
+
+            .testimonial-stars {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .testimonial-author {
+                margin-bottom: 10px;
+            }
+
+            .author-image {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 0;
+            }
+
+            .partners-header {
+                font-size: 20px;
+                margin-top: 25px;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .partner-box {
+                width: 100px;
+                height: 100px;
+            }
+
+            .partner-box img {
+                width: 80%;
+                height: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-testimonial">
+        <!-- Left Side: Testimonial Slider -->
+        <div class="left-side">
+            <div class="testimonial-section">
+                <div class="testimonial-header">| What People Say</div>
+                <div class="testimonial-container">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-quote-text">
+                            <div class="testimonial-quote">“</div>
+                            <p class="testimonial-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia mollit anim laborum sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-author">Merilyn Bozic, New York</p>
+                        <div class="author-image">
+                            <img src="thumb-1.jpg" alt="Merilyn Bozic">
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote-text">
+                            <div class="testimonial-quote">“</div>
+                            <p class="testimonial-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-author">John Smith, New York</p>
+                        <div class="author-image">
+                            <img src="thumb-1.jpg" alt="John Smith">
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote-text">
+                            <div class="testimonial-quote">“</div>
+                            <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-author">Jane Doe, New York</p>
+                        <div class="author-image">
+                            <img src="https://via.placeholder.com/40" alt="Jane Doe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Partners Section -->
+        <div class="right-side">
+            <div class="partners-header">| Trusted By Known Partners</div>
+            <div class="partners-grid">
+                <div class="partner-box">
+                    <img src="https://via.placeholder.com/100?text=Partner+1" alt="Partner 1">
+                </div>
+                <div class="partner-box">
+                    <img src="https://via.placeholder.com/100?text=Partner+2" alt="Partner 2">
+                </div>
+                <div class="partner-box">
+                    <img src="https://via.placeholder.com/100?text=Partner+3" alt="Partner 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Testimonial Rotation -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".testimonial-slide");
+
+        function showNextSlide() {
+            slides[currentSlide].classList.remove("active");
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add("active");
+        }
+
+        setInterval(showNextSlide, 3000); // Change slide every 3 seconds
+    </script>
+</body>
+</html>
